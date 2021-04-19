@@ -48,4 +48,4 @@ Passos para executar o exemplo:
 
 # Finalizando o exemplo
 
-Para descartar o ambiente entrar na pasta terraform e executar o seguinte comando `terraform destroy -f`
+Para descartar o ambiente entrar na pasta terraform e executar o seguinte comando `terraform destroy --force`
