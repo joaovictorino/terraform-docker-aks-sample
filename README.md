@@ -41,7 +41,7 @@ Passos para executar o exemplo:
 5.  Executar o script tfs.sh
 
 ```sh
-    ./tfs.sh
+    ./jenkins.sh
 ```
 
 6.  Acessar no browser o endereço IP exibido no final do script

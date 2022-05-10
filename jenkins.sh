@@ -15,13 +15,13 @@ terraform apply -auto-approve
 echo "\n${RED}Logando no container registry privado${NC}"
 az acr login --name prodamacr
 
-docker tag nginx_teste:latest prodamacr.azurecr.io/nginx_teste:latest
+docker tag nginx_teste:latest testesampleaks.azurecr.io/nginx_teste:latest
 
 echo "\n${RED}Subindo imagem no registry${NC}"
-docker push prodamacr.azurecr.io/nginx_teste:latest
+docker push testesampleaks.azurecr.io/nginx_teste:latest
 
 echo "\n${RED}Logando no aks${NC}"
-az aks get-credentials --resource-group rg-prodam --name teste-aks --overwrite-existing
+az aks get-credentials --resource-group rg-testesampleaks --name teste-aks --overwrite-existing
 
 cd ../
 

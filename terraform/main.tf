@@ -4,7 +4,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "2.25.0"
+      version = ">= 3.5.0"
     }
   }
 }
@@ -32,6 +32,8 @@ resource "azurerm_kubernetes_cluster" "default" {
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   dns_prefix          = "teste-k8s"
+  http_application_routing_enabled = true
+  role_based_access_control_enabled = true
 
   default_node_pool {
     name            = "default"
@@ -43,16 +45,6 @@ resource "azurerm_kubernetes_cluster" "default" {
   service_principal {
     client_id     = var.appId
     client_secret = var.password
-  }
-
-  role_based_access_control {
-    enabled = true
-  }
-
-  addon_profile {
-    kube_dashboard {
-      enabled = true
-    }
   }
 
   tags = {
