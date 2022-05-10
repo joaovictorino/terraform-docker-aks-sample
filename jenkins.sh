@@ -7,13 +7,13 @@ docker build -t nginx_teste .
 cd terraform
 
 echo "\n${RED}Inicializando o terraform no azure${NC}"
-terraform init
+terraform init -upgrade
 
 echo "\n${RED}Criando infra com terraform no azure${NC}"
 terraform apply -auto-approve
 
 echo "\n${RED}Logando no container registry privado${NC}"
-az acr login --name prodamacr
+az acr login --name testesampleaks
 
 docker tag nginx_teste:latest testesampleaks.azurecr.io/nginx_teste:latest
 

@@ -16,7 +16,7 @@ provider "azurerm" {
 
 resource "azurerm_resource_group" "rg" {
   name     = "rg-${var.project_name}"
-  location = "East US"
+  location = "West US"
 }
 
 resource "azurerm_container_registry" "acr" {
@@ -59,10 +59,6 @@ resource "azurerm_role_assignment" "acrpull_role" {
   role_definition_name             = "AcrPull"
   principal_id                     = data.azuread_service_principal.aks_principal.id
   skip_service_principal_aad_check = true
-}
-
-provider "azuread" {
-  version = "~>0.7"
 }
 
 data "azuread_service_principal" "aks_principal" {
