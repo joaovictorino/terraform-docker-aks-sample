@@ -13,12 +13,12 @@ echo "\n${RED}Criando infra com terraform no azure${NC}"
 terraform apply -auto-approve
 
 echo "\n${RED}Logando no container registry privado${NC}"
-az acr login --name testesampleaks
+az acr login --name testesampleaksacr
 
-docker tag nginx_teste:latest testesampleaks.azurecr.io/nginx_teste:latest
+docker tag nginx_teste:latest testesampleaksacr.azurecr.io/nginx_teste:latest
 
 echo "\n${RED}Subindo imagem no registry${NC}"
-docker push testesampleaks.azurecr.io/nginx_teste:latest
+docker push testesampleaksacr.azurecr.io/nginx_teste:latest
 
 echo "\n${RED}Logando no aks${NC}"
 az aks get-credentials --resource-group rg-testesampleaks --name teste-aks --overwrite-existing
@@ -27,6 +27,8 @@ cd ../
 
 echo "\n${RED}Subindo aplicação kubernetes${NC}"
 kubectl apply -f k8s
+
+sleep 30
 
 echo "\n${RED}Acessar o endereço abaixo para teste${NC}\n"
 kubectl get svc nginx-svc -o jsonpath="{.status.loadBalancer.ingress[*].ip}"

@@ -17,7 +17,7 @@ spec:
         app: nginx
     spec:
       containers:
-      - image: prodamacr.azurecr.io/nginx_teste:latest
+      - image: testesampleaksacr.azurecr.io/nginx_teste:latest
         imagePullPolicy: Always
         name: nginx
         ports:
